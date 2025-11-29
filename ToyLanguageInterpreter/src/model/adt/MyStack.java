@@ -24,8 +24,15 @@ public class MyStack<T> implements MyIStack<T> {
         return stack.isEmpty();
     }
 
+
     @Override
     public String toString() {
-        return stack.toString();
+        Stack<T> nw = new  Stack<>();
+        Stack<T> nw2 = new Stack<>();
+        nw.addAll(stack);
+        while (!nw.isEmpty()){
+            nw2.push(nw.pop());
+        }
+        return nw2.toString();
     }
 }

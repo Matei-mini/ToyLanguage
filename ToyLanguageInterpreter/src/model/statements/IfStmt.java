@@ -22,6 +22,7 @@ public class IfStmt implements IStmt {
         return "if(" + exp + "){" + thenS + "}else{" + elseS + "}";
     }
 
+    @Override
     public PrgState execute(PrgState state) throws MyException {
         IValue val = exp.eval(state.getSymTable());
         if (val.getType().equals(new BoolType())) {
@@ -36,5 +37,10 @@ public class IfStmt implements IStmt {
         }
 
         return state;
+    }
+
+    @Override
+    public IStmt deepCopy() {
+        return new IfStmt(exp, thenS.deepCopy(), elseS.deepCopy());
     }
 }

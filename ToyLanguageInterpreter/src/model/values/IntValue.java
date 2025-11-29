@@ -12,4 +12,12 @@ public class IntValue implements IValue{
         return String.valueOf(val);
     }
     public IType getType() { return new IntType();}
+
+    public boolean equals(Object another) {
+        if (another instanceof IntValue){
+            IntValue a = (IntValue) another;
+            return a.getVal() == val;
+        }
+        return false;
+    }
 }
