@@ -68,7 +68,7 @@ public class Controller implements IController {
     private List<PrgState> removeCompletedPrg(List<PrgState> programList){
         return programList.stream()
                 .filter(PrgState::isNotCompleted)
-                .collect(Collectors.toCollection(ArrayList::new));
+                .collect(Collectors.toList());
     }
 
     private void oneStepForAllPrg(List<PrgState> programList) {
@@ -131,13 +131,13 @@ public class Controller implements IController {
 
         List<PrgState> programList = removeCompletedPrg(repository.getPrgList());
 
-        programList.forEach(p -> {
+        /*programList.forEach(p -> {
             try {
                 repository.logPrgState(p);
             } catch (FileNotFoundException | RepoException e) {
                 throw new RuntimeException(e);
             }
-        });
+        });*/
 
         while (!programList.isEmpty()) {
 

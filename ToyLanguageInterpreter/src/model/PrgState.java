@@ -78,7 +78,7 @@ public class PrgState {
         return !exeStack.isEmpty();
     }
 
-    public PrgState executeOneStep() throws FileNotFoundException, RepoException, MyException{
+    public PrgState executeOneStep() throws MyException{
         if(exeStack.isEmpty())
             throw new MyException("prgstate is empty");
         IStmt stmt = exeStack.pop();
