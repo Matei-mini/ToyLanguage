@@ -2,7 +2,9 @@ package model.statements;
 
 import exception.MyException;
 import model.PrgState;
+import model.adt.MyIDictionary;
 import model.adt.MyIStack;
+import model.types.IType;
 
 public class CompStmt implements IStmt{
     private IStmt first;
@@ -22,7 +24,14 @@ public class CompStmt implements IStmt{
         MyIStack<IStmt> stk = state.getExeStack();
         stk.push(snd);
         stk.push(first);
-        return state;
+        return null;
+    }
+
+    @Override
+    public MyIDictionary<String, IType> typecheck(MyIDictionary<String, IType> typeEnv) throws MyException {
+        MyIDictionary<String, IType> typEnv1 = first.typecheck(typeEnv);
+        MyIDictionary<String, IType> typEnv2 = snd.typecheck(typEnv1);
+        return typEnv2;
     }
 
     @Override

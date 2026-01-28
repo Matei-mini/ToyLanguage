@@ -2,6 +2,8 @@ package model.expressions;
 
 import exception.MyException;
 import model.adt.MyIDictionary;
+import model.adt.MyIHeap;
+import model.types.IType;
 import model.values.IValue;
 
 public class VariableExpression implements IExp {
@@ -10,8 +12,13 @@ public class VariableExpression implements IExp {
         this.id = id;
     }
 
-    public IValue eval(MyIDictionary<String, IValue> tbl) throws MyException
+    public IValue eval(MyIDictionary<String, IValue> tbl, MyIHeap heap) throws MyException
     {return tbl.get(id);
+    }
+
+    @Override
+    public IType typecheck(MyIDictionary<String, IType> typeEnv) throws MyException {
+        return typeEnv.get(id);
     }
 
     @Override

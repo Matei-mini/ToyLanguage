@@ -26,9 +26,21 @@ public class MyDictionary<K, V> implements MyIDictionary<K, V> {
     }
 
     @Override
+    public Map<K, V> getContent(){
+        return map;
+    }
+
+    @Override
     public String toString() {
         return map.toString();
     }
 
-
+    @Override
+    public MyIDictionary<K, V> deepcopy() {
+        MyIDictionary<K, V> copy = new MyDictionary<>();
+        for(K key: map.keySet()){
+            copy.put(key, map.get(key));
+        }
+        return copy;
+    }
 }

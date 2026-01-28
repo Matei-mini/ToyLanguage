@@ -1,28 +1,46 @@
 package model;
 
-import model.adt.MyIDictionary;
-import model.adt.MyIFileTable;
-import model.adt.MyIList;
-import model.adt.MyIStack;
+import exception.MyException;
+import exception.RepoException;
+import model.adt.*;
 import model.statements.IStmt;
 import model.values.IValue;
-import model.values.StringValue;
 
-import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.util.*;
 
 public class PrgState {
     private MyIStack<IStmt> exeStack;
     private MyIDictionary<String, IValue> symTable;
     private MyIList<IValue> out;
     private MyIFileTable table;
+    private MyIHeap heap;
+    private static int nextId = 0;
+    private int id;
     private IStmt originalProgram; //optional field, but good to have
 
-    public PrgState(MyIStack<IStmt> stk, MyIDictionary<String, IValue> symtbl, MyIList<IValue> ot,MyIFileTable tbl, IStmt prg){
+    public PrgState(MyIStack<IStmt> stk,
+                    MyIDictionary<String, IValue> symtbl,
+                    MyIList<IValue> ot,
+                    MyIFileTable tbl,
+                    MyIHeap heap,
+                    IStmt prg) {
         this.exeStack = stk;
         this.symTable = symtbl;
         this.out = ot;
         this.table = tbl;
+        this.heap = heap;
         this.originalProgram = prg;
+        this.id = PrgState.getNextId();
+        this.exeStack.push(this.originalProgram);
+    }
+
+    public int getId(){
+        return this.id;
+    }
+
+    public static synchronized int getNextId(){
+        return ++nextId;
     }
 
     public MyIList<IValue> getOut() {
@@ -41,8 +59,29 @@ public class PrgState {
         return table;
     }
 
+    public MyIHeap getHeap(){
+        return heap;
+    }
+
+
     @Override
     public String toString() {
-        return exeStack.toString()+" "+ symTable.toString()+ " " + out.toString()+" "+table.toString();
+        return "Id:"+this.id+"\n"+"ExeStack:"+
+                exeStack.toString() + "\n" +"SymTable:"+
+                symTable.toString() + "\n" +"Out:"+
+                out.toString() + "\n" +"Table:"+
+                table.toString() + "\n" +"Heap:"+
+                heap.toString()+"\n";
+    }
+
+    public boolean isNotCompleted(){
+        return !exeStack.isEmpty();
+    }
+
+    public PrgState executeOneStep() throws FileNotFoundException, RepoException, MyException{
+        if(exeStack.isEmpty())
+            throw new MyException("prgstate is empty");
+        IStmt stmt = exeStack.pop();
+        return stmt.execute(this);
     }
 }

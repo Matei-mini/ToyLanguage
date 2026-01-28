@@ -2,8 +2,11 @@ package model.statements;
 
 import exception.MyException;
 import model.PrgState;
+import model.adt.MyIDictionary;
+import model.adt.MyIHeap;
 import model.expressions.IExp;
 import model.types.BoolType;
+import model.types.IType;
 import model.values.BoolValue;
 import model.values.IValue;
 
@@ -24,7 +27,8 @@ public class IfStmt implements IStmt {
 
     @Override
     public PrgState execute(PrgState state) throws MyException {
-        IValue val = exp.eval(state.getSymTable());
+        MyIHeap heap = state.getHeap();
+        IValue val = exp.eval(state.getSymTable(), heap);
         if (val.getType().equals(new BoolType())) {
             BoolValue b = (BoolValue) val;
             if (b.getVal() == true) {
@@ -36,7 +40,20 @@ public class IfStmt implements IStmt {
             throw new MyException("The condition is not boolean type.");
         }
 
-        return state;
+        return null;
+    }
+
+    @Override
+    public MyIDictionary<String, IType> typecheck(MyIDictionary<String, IType> typeEnv) throws MyException {
+        IType typExp = exp.typecheck(typeEnv);
+        MyIDictionary<String, IType> typEnv1, typEnv2;
+        if(typExp.equals(new BoolType())){
+            typEnv1 = thenS.typecheck(typeEnv);
+            typEnv2 = elseS.typecheck(typEnv1);
+            return typEnv2;
+        }
+        else
+            throw new MyException("The condition of IF has not the type bool");
     }
 
     @Override
