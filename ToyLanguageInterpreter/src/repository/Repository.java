@@ -21,7 +21,7 @@ public class Repository implements IRepository{
 
     @Override
     public void addPrgState(PrgState prgState) {
-        prgStates.add(prgState);
+        this.prgStates.add(prgState);
     }
 
     @Override
