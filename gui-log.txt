@@ -1,0 +1,189 @@
+[Id:1
+ExeStack:[int v, (Ref(int) a;(v=ValueExpression{val=10};(new(a,ValueExpression{val=22};(fork((wH(a,ValueExpression{val=30});(v=ValueExpression{val=32};(print(VariableExpression{id='v'});print(rH(VariableExpression{id='a'})))));(print(VariableExpression{id='v'});print(rH(VariableExpression{id='a'}))))))]
+SymTable:{}
+Out:[]
+Table:{}
+Heap:{}
+]
+[Id:1
+ExeStack:[(Ref(int) a;(v=ValueExpression{val=10};(new(a,ValueExpression{val=22};(fork((wH(a,ValueExpression{val=30});(v=ValueExpression{val=32};(print(VariableExpression{id='v'});print(rH(VariableExpression{id='a'})))));(print(VariableExpression{id='v'});print(rH(VariableExpression{id='a'}))))))]
+SymTable:{v=0}
+Out:[]
+Table:{}
+Heap:{}
+]
+[Id:1
+ExeStack:[Ref(int) a, (v=ValueExpression{val=10};(new(a,ValueExpression{val=22};(fork((wH(a,ValueExpression{val=30});(v=ValueExpression{val=32};(print(VariableExpression{id='v'});print(rH(VariableExpression{id='a'})))));(print(VariableExpression{id='v'});print(rH(VariableExpression{id='a'})))))]
+SymTable:{v=0}
+Out:[]
+Table:{}
+Heap:{}
+]
+[Id:1
+ExeStack:[(v=ValueExpression{val=10};(new(a,ValueExpression{val=22};(fork((wH(a,ValueExpression{val=30});(v=ValueExpression{val=32};(print(VariableExpression{id='v'});print(rH(VariableExpression{id='a'})))));(print(VariableExpression{id='v'});print(rH(VariableExpression{id='a'})))))]
+SymTable:{a=Ref(0,int), v=0}
+Out:[]
+Table:{}
+Heap:{}
+]
+[Id:1
+ExeStack:[v=ValueExpression{val=10}, (new(a,ValueExpression{val=22};(fork((wH(a,ValueExpression{val=30});(v=ValueExpression{val=32};(print(VariableExpression{id='v'});print(rH(VariableExpression{id='a'})))));(print(VariableExpression{id='v'});print(rH(VariableExpression{id='a'}))))]
+SymTable:{a=Ref(0,int), v=0}
+Out:[]
+Table:{}
+Heap:{}
+]
+[Id:1
+ExeStack:[(new(a,ValueExpression{val=22};(fork((wH(a,ValueExpression{val=30});(v=ValueExpression{val=32};(print(VariableExpression{id='v'});print(rH(VariableExpression{id='a'})))));(print(VariableExpression{id='v'});print(rH(VariableExpression{id='a'}))))]
+SymTable:{a=Ref(0,int), v=10}
+Out:[]
+Table:{}
+Heap:{}
+]
+[Id:1
+ExeStack:[new(a,ValueExpression{val=22}, (fork((wH(a,ValueExpression{val=30});(v=ValueExpression{val=32};(print(VariableExpression{id='v'});print(rH(VariableExpression{id='a'})))));(print(VariableExpression{id='v'});print(rH(VariableExpression{id='a'})))]
+SymTable:{a=Ref(0,int), v=10}
+Out:[]
+Table:{}
+Heap:{}
+]
+[Id:1
+ExeStack:[(fork((wH(a,ValueExpression{val=30});(v=ValueExpression{val=32};(print(VariableExpression{id='v'});print(rH(VariableExpression{id='a'})))));(print(VariableExpression{id='v'});print(rH(VariableExpression{id='a'})))]
+SymTable:{a=Ref(1,int), v=10}
+Out:[]
+Table:{}
+Heap:{1=22}
+]
+[Id:1
+ExeStack:[fork((wH(a,ValueExpression{val=30});(v=ValueExpression{val=32};(print(VariableExpression{id='v'});print(rH(VariableExpression{id='a'}))))), (print(VariableExpression{id='v'});print(rH(VariableExpression{id='a'}))]
+SymTable:{a=Ref(1,int), v=10}
+Out:[]
+Table:{}
+Heap:{1=22}
+]
+[Id:1
+ExeStack:[(print(VariableExpression{id='v'});print(rH(VariableExpression{id='a'}))]
+SymTable:{a=Ref(1,int), v=10}
+Out:[]
+Table:{}
+Heap:{1=22}
+]
+[Id:1
+ExeStack:[(print(VariableExpression{id='v'});print(rH(VariableExpression{id='a'}))]
+SymTable:{a=Ref(1,int), v=10}
+Out:[]
+Table:{}
+Heap:{1=22}
+]
+[Id:1
+ExeStack:[print(VariableExpression{id='v'}), print(rH(VariableExpression{id='a'})]
+SymTable:{a=Ref(1,int), v=10}
+Out:[]
+Table:{}
+Heap:{1=22}
+, Id:2
+ExeStack:[wH(a,ValueExpression{val=30}), (v=ValueExpression{val=32};(print(VariableExpression{id='v'});print(rH(VariableExpression{id='a'})))]
+SymTable:{a=Ref(1,int), v=10}
+Out:[]
+Table:{}
+Heap:{1=22}
+]
+[Id:1
+ExeStack:[print(VariableExpression{id='v'}), print(rH(VariableExpression{id='a'})]
+SymTable:{a=Ref(1,int), v=10}
+Out:[]
+Table:{}
+Heap:{1=22}
+, Id:2
+ExeStack:[wH(a,ValueExpression{val=30}), (v=ValueExpression{val=32};(print(VariableExpression{id='v'});print(rH(VariableExpression{id='a'})))]
+SymTable:{a=Ref(1,int), v=10}
+Out:[]
+Table:{}
+Heap:{1=22}
+]
+[Id:1
+ExeStack:[print(rH(VariableExpression{id='a'})]
+SymTable:{a=Ref(1,int), v=10}
+Out:[10]
+Table:{}
+Heap:{1=30}
+, Id:2
+ExeStack:[(v=ValueExpression{val=32};(print(VariableExpression{id='v'});print(rH(VariableExpression{id='a'})))]
+SymTable:{a=Ref(1,int), v=10}
+Out:[10]
+Table:{}
+Heap:{1=30}
+]
+[Id:1
+ExeStack:[print(rH(VariableExpression{id='a'})]
+SymTable:{a=Ref(1,int), v=10}
+Out:[10]
+Table:{}
+Heap:{1=30}
+, Id:2
+ExeStack:[(v=ValueExpression{val=32};(print(VariableExpression{id='v'});print(rH(VariableExpression{id='a'})))]
+SymTable:{a=Ref(1,int), v=10}
+Out:[10]
+Table:{}
+Heap:{1=30}
+]
+[Id:1
+ExeStack:[]
+SymTable:{a=Ref(1,int), v=10}
+Out:[10, 30]
+Table:{}
+Heap:{1=30}
+, Id:2
+ExeStack:[v=ValueExpression{val=32}, (print(VariableExpression{id='v'});print(rH(VariableExpression{id='a'}))]
+SymTable:{a=Ref(1,int), v=10}
+Out:[10, 30]
+Table:{}
+Heap:{1=30}
+]
+[Id:1
+ExeStack:[]
+SymTable:{a=Ref(1,int), v=10}
+Out:[10, 30]
+Table:{}
+Heap:{1=30}
+, Id:2
+ExeStack:[v=ValueExpression{val=32}, (print(VariableExpression{id='v'});print(rH(VariableExpression{id='a'}))]
+SymTable:{a=Ref(1,int), v=10}
+Out:[10, 30]
+Table:{}
+Heap:{1=30}
+]
+[Id:1
+ExeStack:[]
+SymTable:{a=Ref(1,int), v=10}
+Out:[10, 30]
+Table:{}
+Heap:{1=30}
+, Id:2
+ExeStack:[(print(VariableExpression{id='v'});print(rH(VariableExpression{id='a'}))]
+SymTable:{a=Ref(1,int), v=32}
+Out:[10, 30]
+Table:{}
+Heap:{1=30}
+]
+[Id:2
+ExeStack:[print(VariableExpression{id='v'}), print(rH(VariableExpression{id='a'})]
+SymTable:{a=Ref(1,int), v=32}
+Out:[10, 30]
+Table:{}
+Heap:{1=30}
+]
+[Id:2
+ExeStack:[print(rH(VariableExpression{id='a'})]
+SymTable:{a=Ref(1,int), v=32}
+Out:[10, 30, 32]
+Table:{}
+Heap:{1=30}
+]
+[Id:2
+ExeStack:[]
+SymTable:{a=Ref(1,int), v=32}
+Out:[10, 30, 32, 30]
+Table:{}
+Heap:{1=30}
+]

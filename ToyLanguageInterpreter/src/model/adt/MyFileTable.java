@@ -37,4 +37,9 @@ public class MyFileTable implements MyIFileTable{
     public BufferedReader delete(StringValue key) {
         return this.table.remove(key);
     }
+
+    @Override
+    public Map<StringValue, BufferedReader> getContent() {
+        return table;
+    }
 }

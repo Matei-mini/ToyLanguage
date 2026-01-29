@@ -1,5 +1,8 @@
 package model.adt;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Stack;
 
 public class MyStack<T> implements MyIStack<T> {
@@ -34,5 +37,12 @@ public class MyStack<T> implements MyIStack<T> {
             nw2.push(nw.pop());
         }
         return nw2.toString();
+    }
+
+    @Override
+    public List<T> getReversed() {
+        List<T> copy = new ArrayList<>(stack);
+        Collections.reverse(copy);
+        return copy;
     }
 }
