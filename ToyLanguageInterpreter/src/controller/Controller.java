@@ -124,6 +124,46 @@ public class Controller implements IController {
         }
     }
 
+    /**
+     * Executes exactly ONE concurrent step for all active programs (threads),
+     * then runs the conservative garbage collector.
+     *
+     * This is the method the JavaFX "Run one step" button should call.
+     */
+    public void oneStepForAllPrograms() {
+        List<PrgState> programList = removeCompletedPrg(repository.getPrgList());
+        if (programList.isEmpty()) {
+            return;
+        }
+
+        oneStepForAllPrg(programList);
+
+        // GC
+        List<PrgState> updated = repository.getPrgList();
+        if (!updated.isEmpty()) {
+            updated.get(0).getHeap().setContent(
+                    safeGarbageCollector(
+                            updated.stream()
+                                    .flatMap(p -> p.getSymTable().getContent().values().stream())
+                                    .filter(v -> v instanceof RefValue)
+                                    .map(v -> ((RefValue) v).getAddr())
+                                    .toList(),
+                            updated.get(0).getHeap().getContent()
+                    )
+            );
+        }
+
+        // ⚠️ NU mai ștergem programele terminate aici
+    }
+
+
+    /** Call when closing the GUI to stop background threads. */
+    public void shutdown() {
+        if (executor != null) {
+            executor.shutdownNow();
+        }
+    }
+
 
     @Override
     public void allSteps() {
