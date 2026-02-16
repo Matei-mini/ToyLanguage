@@ -127,7 +127,6 @@ public class Controller implements IController {
     /**
      * Executes exactly ONE concurrent step for all active programs (threads),
      * then runs the conservative garbage collector.
-     *
      * This is the method the JavaFX "Run one step" button should call.
      */
     public void oneStepForAllPrograms() {

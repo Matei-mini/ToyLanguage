@@ -6,10 +6,16 @@ import model.adt.MyIDictionary;
 import model.adt.MyIHeap;
 import model.adt.MyIStack;
 import model.expressions.IExp;
+import model.expressions.RelationalExpression;
+import model.expressions.ValueExpression;
+import model.expressions.VariableExpression;
 import model.types.BoolType;
 import model.types.IType;
+import model.types.IntType;
+import model.types.RefType;
 import model.values.BoolValue;
 import model.values.IValue;
+import model.values.IntValue;
 
 public class WhileStmt implements IStmt{
     private IExp exp;
@@ -33,7 +39,7 @@ public class WhileStmt implements IStmt{
             throw new MyException("The expression is not boolean");
         if(eval.equals(new BoolValue(true)))
         {
-            stk.push(this);
+            stk.push(this);//this = current statement object
             stk.push(stmt);
         }
         return null;
@@ -54,3 +60,4 @@ public class WhileStmt implements IStmt{
         return new WhileStmt(exp, stmt);
     }
 }
+

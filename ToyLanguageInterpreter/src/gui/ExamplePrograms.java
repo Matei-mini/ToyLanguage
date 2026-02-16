@@ -153,8 +153,36 @@ public final class ExamplePrograms {
                 )
         );
 
+        IStmt ex7 = new CompStmt(
+                new VarDeclStmt("a", new RefType(new IntType())),
+                new CompStmt(new HeapAllocStmt("a", new ValueExpression(new IntValue(20))),
+                        new CompStmt(new CompStmt(new VarDeclStmt("v", new IntType()),
+                                new ForStmt(
+                                        new ValueExpression(new IntValue(0)),
+                                        new ValueExpression(new IntValue(3)),
+                                        new ArithmeticExpression(new VariableExpression("v"), new ValueExpression(new IntValue(1)),1),
+                                        new ForkStmt(
+                                                new CompStmt(
+                                                        new PrintStmt(new VariableExpression("v")),
+                                                        new AssignStmt("v",
+                                                                new ArithmeticExpression(
+                                                                        new VariableExpression("v"),
+                                                                        new HeapReadingExpression((new VariableExpression("a"))),
+                                                                        3
+                                                                )
+                                                        )
+                                                )
+                                        ),
+                                        "v"
+                                )),
+                                new PrintStmt(new HeapReadingExpression(new VariableExpression("a")))
+                        )
+
+                )
+        );
+
         // Keep only programs that pass typecheck (so GUI doesn't start broken programs).
-        for (IStmt prg : List.of(ex1, ex2, ex3, ex4, ex5, ex6)) {
+        for (IStmt prg : List.of(ex1, ex2, ex3, ex4, ex5, ex6, ex7)) {
             try {
                 MyIDictionary<String, IType> env = new MyDictionary<>();
                 prg.typecheck(env);
