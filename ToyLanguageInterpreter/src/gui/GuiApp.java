@@ -30,9 +30,6 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-/**
- * Lab 11 / Assignment 7: JavaFX GUI for the ToyLanguage interpreter.
- */
 public class GuiApp extends Application {
 
     // ---- UI state
